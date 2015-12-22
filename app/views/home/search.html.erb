@@ -1,0 +1,53 @@
+<div class='container' id='home-container'>
+<div class='row'>
+	<%= image_tag('header.jpg', alt:'header', class:'img-responsive',width:'100%') %>
+</div> 
+
+<div class='row' id='book-div'>
+	<p class='text-info'>
+		<% if  @search_result.count.zero? %>
+			oops! sorry no record found.
+
+		<% else%>
+			<%= @search_result.count %> record(s) found.
+		<%end%> 
+	</p>
+		<table class='table table-bordered table-striped' id='book-table'>			
+			<thead>				
+				<tr>
+					<td>S/N</td>
+					<td>name</td>
+					<td>reg number</td>
+					<td>phone</td>
+					<td>book category</td>
+					<td>book author</td>
+					<td>book title</td>	
+					<td>date borrowed</td>
+					<td>returned ?</td>				
+				</tr>			
+			</thead>		
+			<tbody>					
+			<%  @search_result.each do |search|  %>
+				<tr>
+					<td class='book-td'><%= search.id %></td>
+					<td class='book-td'><%= search.firstname.humanize %> <%= search.lastname.humanize %></td>
+					<td class='book-td'><%= search.reg_number %></td>
+					<td class='book-td'><%= search.phone %></td>
+					<td class='book-td'><%= search.category %></td>
+					<td class='book-td'><%= search.author %></td>
+					<td class='book-td'><%= search.title %></td>
+					<td class='book-td'><%= search.created_at.strftime('%d %b %Y') %></td>
+					<td class='book-td'>
+						<% if search.returned == false %>
+						<%= search.returned%><%= link_to '(update)',home_path(search), method: :patch,data: {confirm: 'Are You Sure You Want To update book ?' } %>
+						<%else%>
+						<%= search.returned%>
+						<%end%>
+					</td>
+				</tr>
+				<%end%>
+			</tbody>					
+		</table>	
+		
+		<%= will_paginate @search_result ,  renderer: BootstrapPagination::Rails  %>
+

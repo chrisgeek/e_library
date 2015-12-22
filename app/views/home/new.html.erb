@@ -1,0 +1,126 @@
+<div class='container' id='home-container'>
+<div class='row'>
+	<%= image_tag('header.jpg', alt:'header', class:'img-responsive',width:'100%') %>
+</div>
+<div class='row'> 
+<nav role='navigation' class='navbar navbar-inverse'>
+	
+	<div class='navbar-header'>
+		<button type='button' data-target='#navbarCollapse' data-toggle='collapse' class='navbar-toggle'>
+			<span class='sr-only'>Toggle Navigation</span>
+			<span class='icon-bar'></span>
+			<span class='icon-bar'></span>
+			<span class='icon-bar'></span>
+			</button>
+				
+	</div>
+	<div id='navbarCollapse' class='collapse navbar-collapse'>
+		<ul class='nav nav-tabs'>
+			<li class='active'><a href='#'><span class="glyphicon glyphicon-home">home</a></li>
+			<li><%= link_to 'edit profile' , edit_admin_registration_path %></li>			
+			<li><%= link_to 'about' %></li>
+			<li></span><%= link_to 'logout', destroy_admin_session_path %></li>
+		</ul>
+
+	</div>
+
+</nav>
+</div>
+<div class='row' id='body-row'>
+	<div class='col-sm-3 col-md-3 col-lg-3' id='left-div'>
+		  
+		<table class="table table-bordered table-hover" id='nav-table'>
+			<tr>
+				<td>
+		       		<%= link_to 'view borrowed books', view_path %>
+		    	</td>
+		    </tr>
+		    <tr>
+				<td>
+		       		<%= link_to 'update book status' %>
+		    	</td>
+		    </tr>
+		     <tr>
+				<td>
+		       		<%= link_to 'check book status' %>
+		    	</td>
+		    </tr>
+
+		    <tr>
+				<td>
+					<%= link_to 'delete request' %>
+		    	</td>
+		    </tr>
+		</table>
+		<div class='row'>
+	<%= form_tag  search_path, method: :get , html:{class:'form-inline'} do  %>
+			<div class="form-inputs">
+				<%= text_field_tag :search , params[:search] %>
+				 <span class="form-actions">
+				<%= submit_tag  "Search", name:nil, class:"btn btn-default", id:'button' %>						
+				</span>
+				<p class='text-warning' id='empty_search'><%= empty_search %></p>
+			</div>
+		<%end%>
+	</div>
+	</div>
+
+	<div class='col-sm-9 col-md-8 col-lg-8' id='right-div'>
+
+	<div class="error">
+	</div>	
+
+	<%= simple_form_for :book , url:home_index_path, remote:true do |f| %>
+
+			<table class='table' >
+			<div class="form-inputs">				 
+				<tr>	 
+					<td class='label-td'>FIRSTNAME</td>
+					<td> <%= f.input :firstname, label:false,autofocus: true %></td>					
+				</tr>					
+				<tr>
+					<td class='label-td'>LASTNAME</td>
+					<td><%= f.input :lastname ,label:false %></td>
+				</tr>	
+				<tr>
+					<td class='label-td'>REG NUMBER</td>
+					<td><%= f.input :reg_number , as: :tel, input_html:{ maxlength: 11}, label:false %></td>			
+				</tr>
+				<tr>
+					<td class='label-td'>GENDER</td>
+					 <td>
+					 	<%= f.collection_radio_buttons :gender,  [[true, 'Male'] ,[false, 'Female']], :first, :last %>
+					 </td>	
+				</tr>
+				<tr>
+					<td class='label-td'>PHONE</td>
+					 <td><%= f.input :phone , as: :tel,input_html: { maxlength: 11} ,label:false %></td>
+				</tr>	
+				
+				<tr>
+					<td class='label-td'>CATEGORY</td>
+					<td>
+					 	<%= f.input :category, label:false%>
+					</td>
+				</tr>
+				<tr>	
+					<td class='label-td'>AUTHOR</td>
+					<td><%= f.input :author,label:false  %></td>
+				</tr>
+				<tr>	
+					<td class='label-td'>TITLE</td>
+					<td> <%= f.input :title ,label:false %></td>  					
+				</tr>
+			</div>
+				<tr>
+			 <div class="form-actions">
+			 	<td>&nbsp;</td>
+    			<td><%= f.button :submit, "SUBMIT"  , class:'btn btn-primary' %></td>
+  			 </div>
+  			 	</tr>
+  			</table>
+		<% end %>				
+
+	</div>
+</div>
+</div>

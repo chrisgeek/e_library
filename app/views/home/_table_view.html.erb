@@ -1,0 +1,39 @@
+
+		<table class='table table-bordered table-striped' id='book-table'>			
+			<thead>				
+				<tr>
+					<td>S/N</td>
+					<td>name</td>
+					<td>reg number</td>
+					<td>phone</td>
+					<td>book category</td>
+					<td>book author</td>
+					<td>book title</td>	
+					<td>date borrowed</td>
+					<td>returned ?</td>				
+				</tr>			
+			</thead>		
+			<tbody>	
+				<% @books.each do |book| %>	
+				<tr>
+					<td class='book-td'><%= book.id %></td>
+					<td class='book-td'><%= book.firstname.humanize %> <%= book.lastname.humanize %></td>
+					<td class='book-td'><%= book.reg_number %></td>
+					<td class='book-td'><%= book.phone %></td>
+					<td class='book-td'><%= book.category %></td>
+					<td class='book-td'><%= book.author %></td>
+					<td class='book-td'><%= book.title %></td>
+					<td class='book-td'><%= book.created_at.strftime('%d %b %Y') %></td>
+					<td class='book-td'><% if book.returned == false %>
+						<%= book.returned%><%= link_to '(update)',home_path(book), method: :patch,data: {confirm: 'Are You Sure You Want To update book ?' } %>
+						<%else%>
+						<%= book.returned%>
+						<%end%>
+					</td>
+				</tr>
+				<%end%>
+			</tbody>					
+		</table>	
+		<div class='row' id='paginate-div'>
+			<%= will_paginate @books ,  renderer: BootstrapPagination::Rails ,remote:true %>
+		</div>
