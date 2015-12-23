@@ -12,20 +12,24 @@ Rails.application.routes.draw do
      # end
   #end
 
+  devise_for :admins, path: '/'
+
+
     devise_scope :admin do
-      get "/logout" => "devise/sessions#destroy"
+      get "/sign_out" => "devise/sessions#destroy"
     end
 
 
-  devise_for :admins, skip:[:sessions,:registrations]
-  as :admin do
-    get 'login' => 'devise/sessions#new', as: :new_admin_session
-    post 'login' => 'devise/sessions#create', as: :admin_session
-    delete 'logout' => 'devise/sessions#destroy', as: :destroy_admin_session
-    get 'register' => 'devise/registrations#new', as: :new_admin_registration
-    post 'create' => 'devise/registrations#create', as: :admin_registration
-    get 'edit_profile' => 'devise/registrations#edit', as: :edit_admin_registration
-  end
+  #devise_for :admins, skip:[:sessions,:registrations]
+  #as :admin do
+   # get 'login' => 'devise/sessions#new', as: :new_admin_session
+    #post 'login' => 'devise/sessions#create', as: :admin_session
+    #delete 'logout' => 'devise/sessions#destroy', as: :destroy_admin_session
+    #get 'register' => 'devise/registrations#new', as: :new_admin_registration
+    #post 'create' => 'devise/registrations#create', as: :admin_registration
+    #get 'edit_profile' => 'devise/registrations#edit', as: :edit_admin_registration
+    #get "delete_user" => "devise/registrations#destroy", as: :edit_user_registration
+  #end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
