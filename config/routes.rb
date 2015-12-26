@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'home#new'
 
 
   #devise_for :admins
@@ -17,7 +16,9 @@ Rails.application.routes.draw do
 
     devise_scope :admin do
       get "/sign_out" => "devise/sessions#destroy"
+      root to: "devise/sessions#new"
     end
+
 
 
   #devise_for :admins, skip:[:sessions,:registrations]
