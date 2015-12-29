@@ -54,7 +54,7 @@ gem 'activerecord-postgresql-adapter'
 
 gem 'letter_opener', :group => :development
 
-
+gem 'sendgrid'
 
 
 group :development, :test do
