@@ -84,12 +84,12 @@ Rails.application.configure do
   #} 
 
    config.action_mailer.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
+    :address        => "smtp.sendgrid.net",
+    :port           => "25",
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'limitless-eyrie-2483.herokuapp.com',
+    :domain         => "limitless-eyrie-2483.herokuapp.com",
     :enable_starttls_auto => true
   }
 
