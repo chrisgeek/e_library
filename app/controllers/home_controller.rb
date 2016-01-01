@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
- 
   before_action :authenticate_admin!
 
   def index
@@ -11,14 +10,13 @@ class HomeController < ApplicationController
       render 'new'
     else
        @search_result = Book.where("reg_number LIKE '%#{params[:search]}%' or firstname LIKE '%#{params[:search]}%' 
-        or lastname LIKE '%#{params[:search]}%' ").order("id DESC").page(params[:page]).per_page(10)
-      
+        or lastname LIKE '%#{params[:search]}%' ").order("id DESC").page(params[:page]).per_page(10)      
     end 
   end
 
   def view
     sleep 2
-      @books = Book.all.order("id DESC").page(params[:page]).per_page(1)
+    @books = Book.all.order("id DESC").page(params[:page]).per_page(1)
   end
 
   def show
@@ -26,23 +24,19 @@ class HomeController < ApplicationController
     @books=Book.find(params[:id])
   end
 
-
   def new
     @book= Book.new
   end
 
-
-  
   def create
     @book = Book.new(book_params)
       if @book.save
         respond_to do |format|
-          format.js
+          format.js{}
         end
-
-      else 
+      else
         respond_to do |format|
-          format.js
+          format.js{}
         end
       end
   end
@@ -52,10 +46,9 @@ class HomeController < ApplicationController
       if @book.update_attribute(:returned,true)
         redirect_to view_path
       end
+  end
 
-    end
-
-  private
+private
   	def book_params
   		params.require(:book).permit(:firstname,:lastname,:phone,:reg_number,:gender,:category,:title,:author)
   	end

@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
 
+    devise_scope :admin do
+      get "/sign_out" => "devise/sessions#destroy"
+      root to: "devise/sessions#new"
+    end
+
+    devise_for :admins, path: '/'
+
   #devise_for :admins
-  resources:home
+
+  resources  :home
   get 'view' => 'home#view'
   get 'search' => 'home#search'
   # do 
@@ -11,13 +19,7 @@ Rails.application.routes.draw do
      # end
   #end
 
-  devise_for :admins, path: '/'
 
-
-    devise_scope :admin do
-      get "/sign_out" => "devise/sessions#destroy"
-      root to: "devise/sessions#new"
-    end
 
 
 

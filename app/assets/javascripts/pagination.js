@@ -1,5 +1,4 @@
 
-
 $(document).ready(
 
 function(){
@@ -12,15 +11,15 @@ function(){
 
 $(document).ready(
 	function(){
-		$('#empty_search').hide();
+		$('#empty_search').hide()
 }
-	);
+	)
 
 $(document).ready(
 
 	function(){
 		$("#button").click(function(){
-			alert('clicked');
-			$('#empty_search').show();
-		});
-	});
+			alert('clicked')			
+			$('#empty_search').show()
+		})
+	})

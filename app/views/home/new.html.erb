@@ -53,7 +53,7 @@
 		    </tr>
 		</table>
 		<div class='row'>
-	<%= form_tag  search_path, method: :get , html:{class:'form-inline'} do  %>
+		<%= form_tag  search_path, method: :get , html:{class:'form-inline'} do  %>
 			<div class="form-inputs">
 				<%= text_field_tag :search , params[:search] %>
 				 <span class="form-actions">
@@ -62,21 +62,21 @@
 				<p class='text-warning' id='empty_search'><%= empty_search %></p>
 			</div>
 		<%end%>
-	</div>
+		</div>
 	</div>
 
 	<div class='col-sm-9 col-md-8 col-lg-8' id='right-div'>
+		<div class="error" >
+			cool
+		</div>		
 
-	<div class="error">
-	</div>	
-
-	<%= simple_form_for :book , url:home_index_path, remote:true do |f| %>
+		<%= simple_form_for :book ,remote:true, url:home_index_path do |f| %>
 
 			<table class='table' >
-			<div class="form-inputs">				 
+			<div class="form-inputs ">				 
 				<tr>	 
 					<td class='label-td'>FIRSTNAME</td>
-					<td> <%= f.input :firstname, label:false,autofocus: true %></td>					
+					<td> <%= f.input :firstname, label:false,autofocus:true %></td>					
 				</tr>					
 				<tr>
 					<td class='label-td'>LASTNAME</td>

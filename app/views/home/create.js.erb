@@ -2,10 +2,11 @@
 
 
 <% if @book.errors.any? %>
-	$(".error").html("<%= escape_javascript(render 'home/error') %>")
+
+$(".error").html("<%= (escape_javascript(render 'error')) %>")
 
 <%else%>
 
 	$(".error").html("SAVED SUCCESSFULLY")
-
+					
 <%end%>

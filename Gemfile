@@ -29,7 +29,6 @@ gem 'rails_12factor', group: :production
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'autoprefixer-rails'
 
@@ -42,21 +41,19 @@ gem 'autoprefixer-rails'
 
 gem 'devise'
 gem 'simple_form'
-#gem 'client_side_validations'
-#gem 'client_side_validations-simple_form'
 gem  'password_strength'
-#gem 'will_paginate', '> 3.0'
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'will_paginate-bootstrap'
 
 
+#gem 'client_side_validations'
+#gem 'client_side_validations-simple_form'
+#gem 'will_paginate', '> 3.0'
+
+
 gem 'activerecord-postgresql-adapter'
-
-
 gem 'letter_opener', :group => :development
-
-gem 'sendgrid'
-
-
+ 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
