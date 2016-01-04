@@ -18,8 +18,7 @@ $(document).ready(
 $(document).ready(
 
 	function(){
-		$("#button").click(function(){
-			alert('clicked')			
+		$("#button").click(function(){			
 			$('#empty_search').show()
 		})
 	})

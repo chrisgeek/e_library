@@ -7,6 +7,6 @@ $(".error").html("<%= (escape_javascript(render 'error')) %>")
 
 <%else%>
 
-	$(".error").html("SAVED SUCCESSFULLY")
+	$(".error").html("<%= (escape_javascript(render 'success')) %>")
 					
 <%end%>

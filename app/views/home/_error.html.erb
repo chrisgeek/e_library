@@ -1,6 +1,6 @@
 	
 		<div class="text-danger" data-alert='alert'>
-	        <a class="close" data-dismiss='alert'>x</a>
+	        <a class="close" data-dismiss='alert'>close</a>
 			<%= (pluralize(@book.errors.size  , "error")) %>
 			<ul>
 				<% @book.errors.full_messages.each do |msg| %>
