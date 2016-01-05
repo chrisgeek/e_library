@@ -1,6 +1,6 @@
 <div class='container'>
 
-<%= render 'devise/header.html.erb'%>
+<%= render 'devise/shared/header'%>
 <h2 class='form'>Resend confirmation instructions</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
