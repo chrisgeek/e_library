@@ -17,19 +17,22 @@ class HomeController < ApplicationController
   def view
     sleep 2
     @books = Book.all.order("id DESC").page(params[:page]).per_page(1)
+    @books_due = Book.where("created_at  <= ?", 1.month.ago)
+    #@books_due = Book.in_last_month
   end
 
   def show
-    @book= Book.all
-    @books=Book.find(params[:id])
+    @book = Book.all
+    @books = Book.find(params[:id])
   end
 
   def new
-    @book= Book.new
+    @book = Book.new
   end
 
   def create
     @book = Book.new(book_params)
+    reg_num = Book.find(params[:reg_number])
       if @book.save
         respond_to do |format|
           format.js{}
@@ -42,14 +45,14 @@ class HomeController < ApplicationController
   end
 
   def update
-    @book=Book.find(params[:id])    
+    @book = Book.find(params[:id])    
       if @book.update_attribute(:returned,true)
         redirect_to view_path
       end
   end
 
-private
+  private
   	def book_params
   		params.require(:book).permit(:firstname,:lastname,:phone,:reg_number,:gender,:category,:title,:author)
   	end
-end
+  end

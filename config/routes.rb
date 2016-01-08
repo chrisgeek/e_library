@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources  :home
   get 'view' => 'home#view'
   get 'search' => 'home#search'
+  get 'expire' => 'home#expire'
   # do 
    #   member do 
     #    get 'view'

@@ -23,9 +23,9 @@
 					<td class='book-td'><%= book.category %></td>
 					<td class='book-td'><%= book.author %></td>
 					<td class='book-td'><%= book.title %></td>
-					<td class='book-td'><%= book.created_at.strftime('%d %b %Y') %></td>
+					<td class='book-td'><%= (book.created_at + 6.days).strftime('%d %b %Y') %></td>
 					<td class='book-td'><% if book.returned == false %>
-						<%= book.returned%><%= link_to '(update)',home_path(book), method: :patch,data: {confirm: 'Are You Sure You Want To update book ?' } %>
+						<%= book.returned%><%= link_to '(update)',home_path(book),id:'update', method: :patch,data: {confirm: 'Are You Sure You Want To update book ?'  } %>
 						<%else%>
 						<%= book.returned%>
 						<%end%>
