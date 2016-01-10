@@ -17,8 +17,11 @@ class HomeController < ApplicationController
   def view
     sleep 2
     @books = Book.all.order("id DESC").page(params[:page]).per_page(1)
-    @books_due = Book.where("created_at  <= ?", 1.month.ago)
-    #@books_due = Book.in_last_month
+    
+  end
+
+  def return_due
+    @books_due = Book.where("created_at  <= ?", 1.day.ago).order("id DESC").page(params[:page]).per_page(10)
   end
 
   def show
@@ -32,7 +35,7 @@ class HomeController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    reg_num = Book.find(params[:reg_number])
+    #reg_num = Book.find(params[:reg_number])
       if @book.save
         respond_to do |format|
           format.js{}
