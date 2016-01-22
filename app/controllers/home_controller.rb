@@ -9,19 +9,19 @@ class HomeController < ApplicationController
       flash[:empty_search]= "can't be blank"
       render 'new'
     else
-       @search_result = Book.where("reg_number LIKE '%#{params[:search]}%' or firstname LIKE '%#{params[:search]}%' 
+       
+      @search_result = Book.where("reg_number LIKE '%#{params[:search]}%' or firstname LIKE '%#{params[:search]}%' 
         or lastname LIKE '%#{params[:search]}%' ").order("id DESC").page(params[:page]).per_page(10)      
     end 
   end
 
   def view
     sleep 2
-    @books = Book.all.order("id DESC").page(params[:page]).per_page(1)
-    
+    @books = Book.all.order("id DESC").page(params[:page]).per_page(1) 
   end
 
   def return_due
-    @books_due = Book.where("created_at  <= ?", 1.day.ago).order("id DESC").page(params[:page]).per_page(10)
+    @books_due = Book.where("created_at  <= ?", 1.month.ago).order("id DESC").page(params[:page]).per_page(10)
   end
 
   def show
