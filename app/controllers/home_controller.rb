@@ -7,9 +7,9 @@ class HomeController < ApplicationController
   def search
     if params[:search].blank? 
       flash[:empty_search]= "can't be blank"
-      render 'new'
+      redirect_to new_home_path
     else
-       
+
       @search_result = Book.where("reg_number LIKE '%#{params[:search]}%' or firstname LIKE '%#{params[:search]}%' 
         or lastname LIKE '%#{params[:search]}%' ").order("id DESC").page(params[:page]).per_page(10)      
     end 
@@ -18,6 +18,7 @@ class HomeController < ApplicationController
   def view
     sleep 2
     @books = Book.all.order("id DESC").page(params[:page]).per_page(1) 
+  
   end
 
   def return_due

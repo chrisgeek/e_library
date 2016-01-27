@@ -1,2 +1,16 @@
 
 $("#book-div").html("<%= escape_javascript(render('home/table_view')) %>")
+
+
+
+
+$(document).ready(
+   function(){
+	$("#book-div .pagination  a").on("click",function(e){
+		$(".pagination").html('please wait...')
+		$.getScript(this.href)
+		e.preventDefault()
+	})
+})
+
+

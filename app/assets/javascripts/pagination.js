@@ -1,11 +1,10 @@
 
 $(document).ready(
-
-function(){
-	$("#book-div .pagination  a").click( function(){
+   function(){
+	$("#book-div .pagination  a").on("click",function(e){
 		$(".pagination").html('please wait...')
 		$.getScript(this.href)
-		return false
+		e.preventDefault()
 	})
 })
 
@@ -16,9 +15,13 @@ $(document).ready(
 	)
 
 $(document).ready(
-
 	function(){
 		$("#button").click(function(){			
-			$('#empty_search').show()
+	var searchtxt=$("#search").val();
+
+	if(searchtxt==""){
+		$("#empty_search").show();
+		alert("Enter text")
+	}
 		})
 	})
