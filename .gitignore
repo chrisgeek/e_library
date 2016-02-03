@@ -20,5 +20,5 @@
 
 
 
-#/config/environments/production.rb
-#/config/*.yml
+/config/environments/production.rb
+/config/database.yml
