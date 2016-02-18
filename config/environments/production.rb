@@ -88,8 +88,8 @@ Rails.application.configure do
     :address        => "smtp.sendgrid.net",
     :port           => "25",
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
+    :user_name      => Rails.application.secrets.sendgrid_username,
+    :password       => Rails.application.secrets.sendgrid_password,
     :domain         => "limitless-eyrie-2483.herokuapp.com",
     :enable_starttls_auto => true
   
