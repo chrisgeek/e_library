@@ -44,6 +44,8 @@ gem 'simple_form'
 gem  'password_strength'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'will_paginate-bootstrap'
+gem 'chartkick'
+gem 'groupdate'
 
 
 #gem 'client_side_validations'
