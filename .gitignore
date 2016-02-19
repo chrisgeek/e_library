@@ -20,5 +20,6 @@
 
 
 
-/config/secrets.yml
+e_library/config/secrets.yml
 /config/database.yml
+
